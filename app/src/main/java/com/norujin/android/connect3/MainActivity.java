@@ -19,6 +19,7 @@ public class MainActivity extends AppCompatActivity {
 
     private Button playAgain;
     private TextView result;
+    private int plays = 0;
 
 
 
@@ -43,6 +44,10 @@ public class MainActivity extends AppCompatActivity {
     public void dropIn (View view){
 
         ImageView counter = (ImageView) view;
+
+        counter.setClickable(false);
+
+        plays++;
 
         int taggedCounter = Integer.parseInt(counter.getTag().toString());
 
@@ -85,6 +90,20 @@ public class MainActivity extends AppCompatActivity {
                     gameActive = false;
 
                 }
+                else {
+
+                    if (plays==9){
+
+                        result.setVisibility(View.VISIBLE);
+                        result.setText("Draw");
+
+                        playAgain.setVisibility(View.VISIBLE);
+
+                        gameActive = false;
+
+                    }
+
+                }
             }
         }
 
@@ -93,6 +112,7 @@ public class MainActivity extends AppCompatActivity {
 
     public void letsPlayAgain(){
 
+        plays = 0;
         playAgain.setVisibility(View.INVISIBLE);
         result.setVisibility(View.INVISIBLE);
 
@@ -114,6 +134,33 @@ public class MainActivity extends AppCompatActivity {
 
         activePlayer = 0;
         gameActive = true;
+
+        reset();
+
+    }
+
+    private void reset() {
+
+        ImageView l1,l2,l3,l4,l5,l6,l7,l8,l9;
+
+        l1 = findViewById(R.id.symbolImageId11);
+        l2 = findViewById(R.id.symbolImageId12);
+        l3 = findViewById(R.id.symbolImageId13);
+        l4 = findViewById(R.id.symbolImageId21);
+        l5 = findViewById(R.id.symbolImageId22);
+        l6 = findViewById(R.id.symbolImageId23);
+        l7 = findViewById(R.id.symbolImageId31);
+        l8 = findViewById(R.id.symbolImageId32);
+        l9 = findViewById(R.id.symbolImageId33);
+        l1.setClickable(true);
+        l2.setClickable(true);
+        l3.setClickable(true);
+        l4.setClickable(true);
+        l5.setClickable(true);
+        l6.setClickable(true);
+        l7.setClickable(true);
+        l8.setClickable(true);
+        l9.setClickable(true);
 
     }
 
